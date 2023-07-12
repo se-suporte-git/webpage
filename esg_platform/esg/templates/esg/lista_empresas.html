@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Empresas</title>
+    <!-- Adicione o link para o Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Adicione o link para o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="text-center">
+
+    <h1>Lista de Empresas</h1>
+    </div>
+    <div class="container">
+
+
+        <!-- Adicione o campo de pesquisa -->
+        <form class="form-inline mb-4">
+            <input class="form-control mr-sm-2" type="search" placeholder="Clique aqui para pesquisar" aria-label="Clique aqui para pesquisar">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+
+        <!-- Adicione as abas de navegação -->
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Empresas com ações ativas em ESG</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+            </li>
+        </ul>
+
+        <!-- Adicione a sua logo -->
+            <!-- Adicione a sua logo -->
+        <div class="text-center">
+            <img src="/static/esg/logo.jpg" alt="Logo" class="img-fluid mb-4">
+        </div>
+
+        <!-- Adicione o conteúdo do blog -->
+        <div id="blog-content">
+            <!-- Conteúdo do blog aqui -->
+            <h2>Título do Post / Blog </h2>
+            <p>Aqui está o Post sobre ESG sobre a empresa X, com dados da empresa Y 
+                Aqui está o Post sobre ESG sobre a empresa X, com dados da empresa Y 
+                Aqui está o Post sobre ESG sobre a empresa X, com dados da empresa Y 
+                Aqui está o Post sobre ESG sobre a empresa X, com dados da empresa Y 
+                Aqui está o Post sobre ESG sobre a empresa X, com dados da empresa Y 
+                Aqui está o Post sobre ESG sobre a empresa X, com dados da empresa Y 
+                
+            </p>
+        </div>
+
+        <!-- Adicione a lista de empresas -->
+        <ul class="list-group">
+            {% for empresa in empresas %}
+                <li class="list-group-item">
+                    <h2>{{ empresa.nome }}</h2>
+                    <p>{{ empresa.descricao }}</p>
+                    <p>Práticas ESG: {{ empresa.pratica_esg }}</p>
+                    <p>Iniciativas ESG: {{ empresa.iniciativa_esg }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Adicione o gráfico de barras -->
+        <h1>Gráfico da empresa X sobre ESG</h1>
+        <canvas id="bar-chart"></canvas>
+
+        <!-- Adicione o gráfico de pizza -->
+        <h1>Gráfico da empresa X sobre ESG</h1>
+        <canvas id="pie-chart"></canvas>
+
+        <!-- Adicione a seção de contatos importantes sobre ESG -->
+        <h1>Contatos Importantes sobre ESG</h1>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h3>Contato 1</h3>
+                <p>Email: contato1@example.com</p>
+                <p>Telefone: +55 123456789</p>
+            </li>
+            <li class="list-group-item">
+                <h3>Contato 2</h3>
+                <p>Email: contato2@example.com</p>
+                <p>Telefone: +55 987654321</p>
+            </li>
+            <li class="list-group-item">
+                <h3>Contato 3</h3>
+                <p>Email: contato3@example.com</p>
+                <p>Telefone: +55 555555555</p>
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Adicione os scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Crie gráficos mockados para apresentação
+        document.addEventListener("DOMContentLoaded", function() {
+            // Dados do gráfico de barras
+            var barData = {
+                labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+                datasets: [{
+                    label: "Vendas",
+                    data: [200, 300, 400, 150, 250],
+                    backgroundColor: "rgba(75, 192, 192, 0.8)"
+                }]
+            };
+
+            // Crie o gráfico de barras
+            var barChart = new Chart(document.getElementById('bar-chart'), {
+                type: 'bar',
+                data: barData
+            });
+
+            // Dados do gráfico de pizza
+            var pieData = {
+                labels: ["Red", "Blue", "Yellow"],
+                datasets: [{
+                    data: [300, 50, 100],
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                }]
+            };
+
+            // Crie o gráfico de pizza
+            var pieChart = new Chart(document.getElementById('pie-chart'), {
+                type: 'pie',
+                data: pieData
+            });
+        });
+    </script>
+    <!-- Adicione o texto "Desenvolvido por GreenBridge" alinhado ao centro -->
+    <div class="text-center">
+        <p>Desenvolvido por GreenBridge</p>
+    </div>
+</div>
+</body>
+</html>
